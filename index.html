@@ -3,39 +3,55 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>지구 진화 시뮬레이션 · 로그인</title>
+  <title>TERRAEVOLVE · 접속</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-page="login">
-  <div class="login-wrap">
-    <h1>지구 진화 시뮬레이션</h1>
-    <p class="sub">환경을 조작하며 생명의 탄생과 진화를 관찰해요.</p>
+  <div class="boot-screen">
+    <div class="boot-stars"></div>
 
-    <form id="loginForm" class="card">
-      <label>반
-        <select id="inClass"></select>
-      </label>
-      <label>번호
-        <input id="inNumber" type="number" min="1" max="50" required>
-      </label>
-      <label>이름
-        <input id="inName" type="text" autocomplete="off" required>
-      </label>
-      <label>비밀번호 (숫자 4자리)
-        <input id="inPw" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required>
-      </label>
-      <button type="submit">시작하기</button>
-      <p id="loginMsg" class="msg"></p>
-    </form>
+    <div class="boot-inner">
+      <div class="game-logo">
+        <div class="logo-orbit"><span class="planet"></span></div>
+        <h1>TERRA<b>EVOLVE</b></h1>
+        <p class="tagline">행성 생명 진화 시뮬레이터</p>
+      </div>
 
-    <p class="teacher-link"><a href="teacher.html">교사용 대시보드 &rarr;</a></p>
-    <p class="note">
-      ※ 처음 입력한 비밀번호로 계정이 자동 생성됩니다(교육용 단순화).
-      개인적으로 쓰는 중요한 비밀번호는 절대 재사용하지 마세요.
-    </p>
+      <form id="loginForm" class="console-panel">
+        <div class="panel-head">▶ 지휘관 접속</div>
+
+        <div class="field">
+          <label>소속 반</label>
+          <select id="inClass"></select>
+        </div>
+        <div class="field">
+          <label>번호</label>
+          <input id="inNumber" type="number" min="1" max="50" required>
+        </div>
+        <div class="field">
+          <label>이름</label>
+          <input id="inName" type="text" autocomplete="off" required>
+        </div>
+        <div class="field">
+          <label>암호 (숫자 4자리)</label>
+          <input id="inPw" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required>
+        </div>
+
+        <button type="submit" class="btn-start">▶ 시뮬레이션 시작</button>
+        <p id="loginMsg" class="msg"></p>
+      </form>
+
+      <div class="boot-menu">
+        <a href="teacher.html" class="btn-sub">⚙ 교사 관제 콘솔</a>
+      </div>
+
+      <p class="note">
+        첫 접속 시 입력한 암호로 계정이 생성됩니다(교육용 단순화).
+        개인적으로 쓰는 중요한 비밀번호는 재사용하지 마세요.
+      </p>
+    </div>
   </div>
 
-  <!-- 로드 순서 고정: config → sim → api → ui → main -->
   <script src="js/config.js"></script>
   <script src="js/sim.js"></script>
   <script src="js/api.js"></script>

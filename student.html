@@ -3,60 +3,103 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>지구 진화 시뮬레이션 · 학생</title>
+  <title>TERRAEVOLVE · 플레이</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-page="student">
-  <header class="topbar">
-    <div class="tb-left">
-      <strong id="stuName">학생</strong>
-      <span id="eraBadge" class="badge">시대</span>
-      <span id="turnInfo">턴 0</span>
-    </div>
-    <div class="tb-right">
-      <div class="totalScore"><span id="totalScore">0</span><small>/100</small></div>
-      <button id="btnPause" type="button">일시정지</button>
-      <button id="btnSave" type="button">저장</button>
-      <span id="saveStatus" class="save-status">-</span>
-      <a href="index.html" class="logout">나가기</a>
-    </div>
-  </header>
+  <div class="game-shell">
 
-  <main class="grid">
-    <section class="panel">
-      <h2>환경</h2>
-      <div id="envList"></div>
-      <div id="moodBox" class="mood"></div>
-    </section>
+    <!-- 상단 HUD -->
+    <header class="hud-top">
+      <div class="hud-brand">
+        <span class="logo-mark">◐</span>
+        <span class="logo-text">TERRA<b>EVOLVE</b></span>
+      </div>
+      <div class="hud-meta">
+        <span class="chip era" id="eraBadge">시대</span>
+        <span class="chip" id="turnInfo">턴 0</span>
+        <span class="chip ghost" id="stuName">학생</span>
+      </div>
+      <div class="hud-score">
+        <div class="score-big" id="scoreBig"><span id="totalScore">0</span><i>/100</i></div>
+        <div class="hud-actions">
+          <button id="btnPause" class="btn-mini" type="button">일시정지</button>
+          <button id="btnSave" class="btn-mini" type="button">저장</button>
+          <a href="index.html" class="btn-mini link">나가기</a>
+        </div>
+        <div class="save-status" id="saveStatus">-</div>
+      </div>
+    </header>
 
-    <section class="panel">
-      <h2>생물</h2>
-      <div id="speciesList" class="species-grid"></div>
-    </section>
+    <!-- 탭 -->
+    <nav class="tab-bar" id="tabBar">
+      <button class="tab is-active" data-tab="planet" type="button">행성</button>
+      <button class="tab" data-tab="env" type="button">환경</button>
+      <button class="tab" data-tab="bio" type="button">생물</button>
+      <button class="tab" data-tab="score" type="button">점수</button>
+      <button class="tab" data-tab="quest" type="button">퀘스트</button>
+      <button class="tab" data-tab="log" type="button">로그</button>
+    </nav>
 
-    <section class="panel">
-      <h2>행동</h2>
-      <div id="actions" class="actions"></div>
-      <p class="hint">버튼을 누르면 상태가 바뀌고, 몇 턴 동안 쿨다운이 걸립니다.</p>
-    </section>
+    <!-- 화면 -->
+    <main class="stage">
+      <section class="view is-active" data-view="planet">
+        <div class="planet-scene" id="planetScene">
+          <div class="scene-sky"></div>
+          <div class="scene-sea"></div>
+          <div class="scene-land"></div>
+          <div class="scene-life" id="sceneLife"></div>
+          <p class="scene-caption" id="sceneCaption"></p>
+        </div>
+        <div class="planet-readout" id="planetReadout"></div>
+      </section>
 
-    <section class="panel">
-      <h2>점수</h2>
-      <div id="scoreList"></div>
-      <h3>이번 턴 점수 변화</h3>
-      <ul id="reasons" class="reasons"></ul>
-    </section>
+      <section class="view" data-view="env">
+        <div class="panel">
+          <h2>환경 지표</h2>
+          <div id="envList" class="gauge-list"></div>
+          <p class="hint">막대의 빗금 구간이 생물에게 안정적인 범위입니다. 화살표는 지난 턴 대비 변화 방향.</p>
+        </div>
+      </section>
 
-    <section class="panel">
-      <h2>퀘스트</h2>
-      <ul id="questList" class="quests"></ul>
-    </section>
+      <section class="view" data-view="bio">
+        <div class="panel">
+          <h2>생물 현황</h2>
+          <div id="speciesList" class="species-grid"></div>
+          <p class="hint">개체수가 늘고 시대가 진행되면 생김새가 단계적으로 변합니다(교육용으로 단순화한 진화 표현).</p>
+        </div>
+      </section>
 
-    <section class="panel">
-      <h2>이벤트 로그</h2>
-      <ul id="logList" class="log"></ul>
-    </section>
-  </main>
+      <section class="view" data-view="score">
+        <div class="panel">
+          <h2>다양성 점수</h2>
+          <div id="scoreList"></div>
+          <h3>이번 턴 점수 변화</h3>
+          <ul id="reasons" class="reasons"></ul>
+        </div>
+      </section>
+
+      <section class="view" data-view="quest">
+        <div class="panel">
+          <h2>퀘스트</h2>
+          <ul id="questList" class="quests"></ul>
+        </div>
+      </section>
+
+      <section class="view" data-view="log">
+        <div class="panel console">
+          <h2>이벤트 로그</h2>
+          <ul id="logList" class="log"></ul>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- 하단 행동 도크 -->
+  <footer class="action-dock">
+    <div class="dock-label">행동</div>
+    <div id="actions" class="actions"></div>
+  </footer>
 
   <div id="toast" class="toast" hidden></div>
 
