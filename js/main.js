@@ -100,6 +100,7 @@
     var saving = false;
     var lastSavedTurn = -1;
 
+    window.UI.mount(state);
     window.UI.render(state);
     window.UI.setSaveStatus(window.API.getUrl() ? '준비됨' : '오프라인 모드');
 
