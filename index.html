@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>지구 진화 시뮬레이션 · 로그인</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="login">
+  <div class="login-wrap">
+    <h1>지구 진화 시뮬레이션</h1>
+    <p class="sub">환경을 조작하며 생명의 탄생과 진화를 관찰해요.</p>
+
+    <form id="loginForm" class="card">
+      <label>반
+        <select id="inClass"></select>
+      </label>
+      <label>번호
+        <input id="inNumber" type="number" min="1" max="50" required>
+      </label>
+      <label>이름
+        <input id="inName" type="text" autocomplete="off" required>
+      </label>
+      <label>비밀번호 (숫자 4자리)
+        <input id="inPw" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" required>
+      </label>
+      <button type="submit">시작하기</button>
+      <p id="loginMsg" class="msg"></p>
+    </form>
+
+    <p class="teacher-link"><a href="teacher.html">교사용 대시보드 &rarr;</a></p>
+    <p class="note">
+      ※ 처음 입력한 비밀번호로 계정이 자동 생성됩니다(교육용 단순화).
+      개인적으로 쓰는 중요한 비밀번호는 절대 재사용하지 마세요.
+    </p>
+  </div>
+
+  <!-- 로드 순서 고정: config → sim → api → ui → main -->
+  <script src="js/config.js"></script>
+  <script src="js/sim.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

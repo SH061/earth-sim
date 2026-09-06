@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>지구 진화 시뮬레이션 · 교사</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="teacher">
+  <!-- 교사 비밀번호 게이트 -->
+  <div id="gate" class="login-wrap">
+    <h1>교사 대시보드</h1>
+    <form id="gateForm" class="card">
+      <label>교사 비밀번호
+        <input id="teacherPw" type="password" required>
+      </label>
+      <button type="submit">입장</button>
+      <p id="gateMsg" class="msg"></p>
+    </form>
+    <p class="teacher-link"><a href="index.html">&larr; 학생 로그인</a></p>
+    <p class="note">기본 비밀번호는 <code>teach2026</code> 입니다. (Code.gs의 setup에서 생성)</p>
+  </div>
+
+  <!-- 대시보드 본문 -->
+  <div id="dash" hidden>
+    <header class="topbar">
+      <strong>교사 대시보드</strong>
+      <div class="tb-right">
+        <button id="btnLoginToggle" type="button">학생 입장: 확인 중…</button>
+        <label class="auto">반 <select id="classFilter"></select></label>
+        <button id="btnRefresh" type="button">새로고침</button>
+        <label class="auto"><input type="checkbox" id="autoRef" checked> 자동(30초)</label>
+        <a href="index.html" class="logout">나가기</a>
+      </div>
+    </header>
+
+    <section class="panel">
+      <h2>전지구 이벤트 발동</h2>
+      <div id="eventBtns" class="actions"></div>
+      <p id="evtMsg" class="msg"></p>
+      <p class="hint">발동한 이벤트는 학생이 다음 턴을 진행할 때(최대 15초 내) 각자의 지구에 반영됩니다. (교육용 단순화: 준실시간)</p>
+    </section>
+
+    <section class="panel">
+      <h2>학생 현황 (총점순)</h2>
+      <div class="table-wrap">
+        <table id="stuTable">
+          <thead>
+            <tr>
+              <th>반</th><th>번호</th><th>이름</th><th>시대</th><th>턴</th>
+              <th>생태계</th><th>종</th><th>유전</th><th>지성</th><th>총점</th><th>갱신</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p id="tableMsg" class="msg"></p>
+    </section>
+
+    <section class="panel" id="detailPanel" hidden>
+      <h2>학생 상세 <span id="detailName"></span></h2>
+      <div id="detailBody"></div>
+    </section>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/sim.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
