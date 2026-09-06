@@ -131,7 +131,7 @@
     // --- 버튼 ---
     document.getElementById('btnPause').addEventListener('click', function () {
       paused = !paused;
-      this.textContent = paused ? '재개' : '일시정지';
+      this.textContent = paused ? '▶ 재개' : '⏸ 일시정지';
       window.UI.toast(paused ? '일시정지됨' : '재개됨');
     });
     document.getElementById('btnSave').addEventListener('click', function () { doSave(false); });
